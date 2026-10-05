@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tu Negocio | Calidad hecha con cariño</title>
+  <meta name="description" content="Tu Negocio: productos y servicios hechos con dedicación. Conoce lo que ofrecemos y contáctanos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ===== Encabezado ===== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#inicio" class="logo">Tu<span>Negocio</span></a>
+      <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#opiniones">Opiniones</a>
+        <a href="#contacto" class="btn btn--small">Contáctanos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== Portada ===== -->
+    <section class="hero" id="inicio">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">Bienvenidos</p>
+          <h1>Productos y servicios hechos con cariño y calidad</h1>
+          <p class="hero__lead">Escribe aquí una frase corta que explique qué hace tu negocio y por qué tus clientes te eligen.</p>
+          <div class="hero__actions">
+            <a href="#servicios" class="btn">Ver servicios</a>
+            <a href="#contacto" class="btn btn--outline">Escríbenos</a>
+          </div>
+        </div>
+        <div class="hero__image" role="img" aria-label="Imagen principal del negocio"></div>
+      </div>
+    </section>
+
+    <!-- ===== Nosotros ===== -->
+    <section class="section" id="nosotros">
+      <div class="container split">
+        <div class="about__image" role="img" aria-label="Foto del equipo o del local"></div>
+        <div>
+          <p class="eyebrow">Nuestra historia</p>
+          <h2>Sobre nosotros</h2>
+          <p>Cuenta aquí cómo nació tu negocio, quiénes forman parte del equipo y qué valores los guían. A la gente le gusta conocer a las personas detrás de una marca.</p>
+          <ul class="checklist">
+            <li>Atención cercana y personalizada</li>
+            <li>Materiales e ingredientes de calidad</li>
+            <li>Compromiso con nuestra comunidad</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Servicios ===== -->
+    <section class="section section--alt" id="servicios">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Lo que ofrecemos</p>
+          <h2>Nuestros servicios</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2C7 7 4 10.5 4 14a8 8 0 0 0 16 0c0-3.5-3-7-8-12z"/></svg>
+            </div>
+            <h3>Servicio uno</h3>
+            <p>Describe brevemente este servicio o producto y el beneficio que obtiene el cliente.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>
+            </div>
+            <h3>Servicio dos</h3>
+            <p>Describe brevemente este servicio o producto y el beneficio que obtiene el cliente.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6C19 16.6 12 21 12 21z"/></svg>
+            </div>
+            <h3>Servicio tres</h3>
+            <p>Describe brevemente este servicio o producto y el beneficio que obtiene el cliente.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Galería ===== -->
+    <section class="section" id="galeria">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Nuestro trabajo</p>
+          <h2>Galería</h2>
+        </div>
+        <div class="gallery">
+          <div class="gallery__item g1" role="img" aria-label="Foto 1"></div>
+          <div class="gallery__item g2" role="img" aria-label="Foto 2"></div>
+          <div class="gallery__item g3" role="img" aria-label="Foto 3"></div>
+          <div class="gallery__item g4" role="img" aria-label="Foto 4"></div>
+          <div class="gallery__item g5" role="img" aria-label="Foto 5"></div>
+          <div class="gallery__item g6" role="img" aria-label="Foto 6"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Opiniones ===== -->
+    <section class="section section--alt" id="opiniones">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Testimonios</p>
+          <h2>Lo que dicen nuestros clientes</h2>
+        </div>
+        <div class="cards">
+          <blockquote class="quote">
+            <p>“Excelente atención y un resultado que superó mis expectativas. ¡Totalmente recomendado!”</p>
+            <cite>— María G.</cite>
+          </blockquote>
+          <blockquote class="quote">
+            <p>“Se nota el cariño que le ponen a cada detalle. Volveré sin duda.”</p>
+            <cite>— Carlos R.</cite>
+          </blockquote>
+          <blockquote class="quote">
+            <p>“Rápidos, amables y con precios justos. Mi lugar de confianza.”</p>
+            <cite>— Lucía P.</cite>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Contacto ===== -->
+    <section class="section" id="contacto">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">Hablemos</p>
+          <h2>Contáctanos</h2>
+          <p>¿Tienes alguna pregunta o quieres hacer un pedido? Escríbenos y te respondemos lo antes posible.</p>
+          <ul class="contact-list">
+            <li><strong>Dirección:</strong> Calle Ejemplo 123, Tu Ciudad</li>
+            <li><strong>Teléfono:</strong> <a href="tel:+000000000">+00 000 000 000</a></li>
+            <li><strong>Correo:</strong> <a href="mailto:hola@tunegocio.com">hola@tunegocio.com</a></li>
+            <li><strong>Horario:</strong> Lunes a sábado, 9:00 – 18:00</li>
+          </ul>
+          <a class="btn btn--whatsapp" href="https://wa.me/000000000" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+        </div>
+        <form class="form" id="contact-form">
+          <label>Nombre
+            <input type="text" name="nombre" required>
+          </label>
+          <label>Correo electrónico
+            <input type="email" name="correo" required>
+          </label>
+          <label>Mensaje
+            <textarea name="mensaje" rows="5" required></textarea>
+          </label>
+          <button type="submit" class="btn">Enviar mensaje</button>
+          <p class="form__note" id="form-note" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Pie de página ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p class="logo">Tu<span>Negocio</span></p>
+      <p>&copy; <span id="year"></span> Tu Negocio. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
