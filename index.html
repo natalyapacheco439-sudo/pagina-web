@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amara Home | Decoración para tu hogar</title>
-  <meta name="description" content="Amara Home: decoración y detalles para hacer de tu casa un hogar. Conoce nuestros productos y contáctanos.">
+  <title>Amara Home | Inmuebles y remodelaciones en Bogotá</title>
+  <meta name="description" content="Amara Home: captación, venta y remodelación de inmuebles en Bogotá y municipios aledaños. Te acompañamos en cada paso.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -21,10 +21,10 @@
         <span></span><span></span><span></span>
       </button>
       <nav class="nav">
+        <a href="#inmuebles">Inmuebles</a>
+        <a href="#vender">Vende tu inmueble</a>
+        <a href="#servicios">Servicios</a>
         <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Productos</a>
-        <a href="#galeria">Galería</a>
-        <a href="#opiniones">Opiniones</a>
         <a href="#contacto" class="btn btn--small">Contáctanos</a>
       </nav>
     </div>
@@ -35,88 +35,133 @@
     <section class="hero" id="inicio">
       <div class="container hero__inner">
         <div class="hero__text">
-          <p class="eyebrow">Bienvenidos</p>
-          <h1>Detalles que convierten tu casa en hogar</h1>
-          <p class="hero__lead">Piezas de decoración elegidas con cuidado para crear espacios cálidos, modernos y llenos de personalidad.</p>
-          <div class="hero__actions">
-            <a href="#servicios" class="btn">Ver productos</a>
-            <a href="#contacto" class="btn btn--outline">Escríbenos</a>
-          </div>
+          <p class="eyebrow">Bogotá y alrededores</p>
+          <h1>Encuentra tu próximo inmueble</h1>
+          <p class="hero__lead">Apartamentos, casas, lotes y locales en Bogotá y municipios aledaños, con asesoría cercana de principio a fin.</p>
+          <form class="search" id="hero-search">
+            <label class="search__field">Tipo
+              <select name="tipo" data-options="tipo"><option value="">Todos</option></select>
+            </label>
+            <label class="search__field">Ciudad
+              <select name="ciudad" data-options="ciudad"><option value="">Todas</option></select>
+            </label>
+            <button type="submit" class="btn">Buscar</button>
+          </form>
+          <p class="hero__alt">¿Quieres vender? <a href="#vender">Publica tu inmueble con nosotros</a></p>
         </div>
-        <div class="hero__image" role="img" aria-label="Ambiente decorado por Amara Home"></div>
+        <div class="hero__image" role="img" aria-label="Inmueble de Amara Home"></div>
+      </div>
+    </section>
+
+    <!-- ===== Inmuebles ===== -->
+    <section class="section section--alt" id="inmuebles">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Disponibles ahora</p>
+          <h2>Nuestros inmuebles</h2>
+        </div>
+        <form class="filters" id="filters">
+          <label>Operación
+            <select name="operacion" data-options="operacion"><option value="">Todas</option></select>
+          </label>
+          <label>Tipo
+            <select name="tipo" data-options="tipo"><option value="">Todos</option></select>
+          </label>
+          <label>Ciudad
+            <select name="ciudad" data-options="ciudad"><option value="">Todas</option></select>
+          </label>
+          <label>Habitaciones
+            <select name="habitaciones">
+              <option value="">Cualquiera</option>
+              <option value="1">1 o más</option>
+              <option value="2">2 o más</option>
+              <option value="3">3 o más</option>
+              <option value="4">4 o más</option>
+            </select>
+          </label>
+          <label>Precio máximo
+            <select name="precioMax">
+              <option value="">Sin límite</option>
+              <option value="300000000">$300 millones</option>
+              <option value="500000000">$500 millones</option>
+              <option value="800000000">$800 millones</option>
+              <option value="1200000000">$1.200 millones</option>
+            </select>
+          </label>
+          <label>Buscar
+            <input type="search" name="texto" placeholder="Barrio, código…">
+          </label>
+        </form>
+        <p class="results-count" id="results-count" role="status"></p>
+        <div class="listings" id="listings"></div>
+      </div>
+    </section>
+
+    <!-- ===== Vende tu inmueble ===== -->
+    <section class="cta" id="vender">
+      <div class="container cta__inner">
+        <div>
+          <p class="eyebrow">Propietarios</p>
+          <h2>¿Quieres vender o arrendar tu inmueble?</h2>
+          <p>Lo evaluamos sin costo, lo publicamos en nuestra página y lo promocionamos para encontrar al cliente indicado. Te acompañamos hasta la firma.</p>
+        </div>
+        <a class="btn" href="#contacto" data-interes="Vender mi inmueble">Quiero publicar mi inmueble</a>
+      </div>
+    </section>
+
+    <!-- ===== Servicios ===== -->
+    <section class="section" id="servicios">
+      <div class="container">
+        <div class="section__head">
+          <p class="eyebrow">Lo que ofrecemos</p>
+          <h2>Nuestros servicios</h2>
+        </div>
+        <div class="cards">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3 2 11h3v9h5v-6h4v6h5v-9h3z"/></svg>
+            </div>
+            <h3>Captación de inmuebles</h3>
+            <p>¿Quieres vender tu casa, apartamento o lote? Lo valoramos, lo preparamos y lo promocionamos para encontrar al comprador indicado.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M8 4a5 5 0 0 0-1 9.9V21h3v-2h2v-2h-2v-3.1A5 5 0 0 0 8 4zm0 3a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm7 3h7v3h-2v2h-2v-2h-3z"/></svg>
+            </div>
+            <h3>Venta de inmuebles</h3>
+            <p>Te ayudamos a encontrar la propiedad que buscas y te acompañamos en la negociación, los trámites y la firma.</p>
+          </article>
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 3h12v4H3zM15 4h3v6h-8v3h2v8H8v-8h0V8h8V6h-1z"/></svg>
+            </div>
+            <h3>Remodelaciones</h3>
+            <p>Renovamos cocinas, baños, pisos y espacios completos para que tu inmueble se vea mejor y gane valor.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <!-- ===== Nosotros ===== -->
-    <section class="section" id="nosotros">
+    <section class="section section--alt" id="nosotros">
       <div class="container split">
         <div class="about__image"><img src="img/logo.png" alt="Logo de Amara Home"></div>
         <div>
-          <p class="eyebrow">Nuestra historia</p>
+          <p class="eyebrow">Quiénes somos</p>
           <h2>Sobre nosotros</h2>
-          <p>En Amara Home creemos que cada rincón cuenta una historia. Seleccionamos piezas con diseño y calidez para que tu hogar refleje quién eres. (Cuéntanos cómo nació Amara Home y lo ponemos aquí.)</p>
+          <p>Amara Home es una empresa dedicada a la captación, venta y remodelación de inmuebles en Bogotá y sus municipios aledaños. Conocemos el mercado de la ciudad y trabajamos para que cada propietario y cada comprador tome la mejor decisión, con seguridad y sin complicaciones.</p>
           <ul class="checklist">
-            <li>Atención cercana y personalizada</li>
-            <li>Piezas seleccionadas y de calidad</li>
-            <li>Asesoría para decorar tus espacios</li>
+            <li>Asesoría personalizada de principio a fin</li>
+            <li>Conocimiento del mercado en Bogotá y la Sabana</li>
+            <li>Acompañamiento en trámites y negociación</li>
+            <li>Remodelaciones que valorizan tu propiedad</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- ===== Productos ===== -->
-    <section class="section section--alt" id="servicios">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow">Lo que ofrecemos</p>
-          <h2>Nuestros productos</h2>
-        </div>
-        <div class="cards">
-          <article class="card">
-            <div class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 2C7 7 4 10.5 4 14a8 8 0 0 0 16 0c0-3.5-3-7-8-12z"/></svg>
-            </div>
-            <h3>Decoración</h3>
-            <p>Jarrones, cuadros, espejos y accesorios para darle estilo a cada espacio.</p>
-          </article>
-          <article class="card">
-            <div class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6L3.3 9.3l6.1-.7z"/></svg>
-            </div>
-            <h3>Textiles</h3>
-            <p>Cojines, mantas y cortinas que aportan calidez y textura a tu hogar.</p>
-          </article>
-          <article class="card">
-            <div class="card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-9.3-9A5.3 5.3 0 0 1 12 6a5.3 5.3 0 0 1 9.3 6C19 16.6 12 21 12 21z"/></svg>
-            </div>
-            <h3>Asesoría</h3>
-            <p>Te ayudamos a elegir las piezas ideales para tu sala, comedor o habitación.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Galería ===== -->
-    <section class="section" id="galeria">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow">Nuestro trabajo</p>
-          <h2>Galería</h2>
-        </div>
-        <div class="gallery">
-          <div class="gallery__item g1" role="img" aria-label="Foto 1"></div>
-          <div class="gallery__item g2" role="img" aria-label="Foto 2"></div>
-          <div class="gallery__item g3" role="img" aria-label="Foto 3"></div>
-          <div class="gallery__item g4" role="img" aria-label="Foto 4"></div>
-          <div class="gallery__item g5" role="img" aria-label="Foto 5"></div>
-          <div class="gallery__item g6" role="img" aria-label="Foto 6"></div>
-        </div>
-      </div>
-    </section>
-
     <!-- ===== Opiniones ===== -->
-    <section class="section section--alt" id="opiniones">
+    <section class="section" id="opiniones">
       <div class="container">
         <div class="section__head">
           <p class="eyebrow">Testimonios</p>
@@ -124,15 +169,15 @@
         </div>
         <div class="cards">
           <blockquote class="quote">
-            <p>“Mi sala cambió por completo. Piezas preciosas y una atención excelente.”</p>
+            <p>“Vendieron mi apartamento en poco tiempo y me acompañaron en todos los trámites.”</p>
             <cite>— María G.</cite>
           </blockquote>
           <blockquote class="quote">
-            <p>“Todo llegó perfecto y con mucho cuidado. Se nota el gusto en cada detalle.”</p>
+            <p>“Remodelaron la cocina y los baños de mi casa. Quedó hermosa y a tiempo.”</p>
             <cite>— Carlos R.</cite>
           </blockquote>
           <blockquote class="quote">
-            <p>“Me asesoraron para decorar mi habitación y quedó justo como la soñaba.”</p>
+            <p>“Encontré la casa que buscaba en Chía gracias a su asesoría. Muy recomendados.”</p>
             <cite>— Lucía P.</cite>
           </blockquote>
         </div>
@@ -140,19 +185,20 @@
     </section>
 
     <!-- ===== Contacto ===== -->
-    <section class="section" id="contacto">
+    <section class="section section--alt" id="contacto">
       <div class="container split">
         <div>
           <p class="eyebrow">Hablemos</p>
           <h2>Contáctanos</h2>
-          <p>¿Tienes alguna pregunta o quieres hacer un pedido? Escríbenos y te respondemos lo antes posible.</p>
+          <p>¿Quieres vender, comprar o remodelar? Escríbenos y te asesoramos sin compromiso.</p>
           <ul class="contact-list">
-            <li><strong>Dirección:</strong> Calle Ejemplo 123, Tu Ciudad</li>
-            <li><strong>Teléfono:</strong> <a href="tel:+000000000">+00 000 000 000</a></li>
+            <li><strong>Zona de servicio:</strong> Bogotá y municipios aledaños</li>
+            <li><strong>Oficina:</strong> Bogotá, Colombia</li>
+            <li><strong>Teléfono:</strong> <a href="tel:+570000000000">+57 300 000 0000</a></li>
             <li><strong>Correo:</strong> <a href="mailto:hola@amarahome.com">hola@amarahome.com</a></li>
             <li><strong>Horario:</strong> Lunes a sábado, 9:00 – 18:00</li>
           </ul>
-          <a class="btn btn--whatsapp" href="https://wa.me/000000000" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
+          <a class="btn btn--whatsapp" data-whatsapp href="https://wa.me/570000000000" target="_blank" rel="noopener">Escríbenos por WhatsApp</a>
         </div>
         <form class="form" id="contact-form">
           <label>Nombre
@@ -161,8 +207,19 @@
           <label>Correo electrónico
             <input type="email" name="correo" required>
           </label>
+          <label>Teléfono
+            <input type="tel" name="telefono">
+          </label>
+          <label>¿En qué te podemos ayudar?
+            <select name="interes" required>
+              <option value="Vender mi inmueble">Quiero vender mi inmueble</option>
+              <option value="Comprar un inmueble">Quiero comprar o arrendar un inmueble</option>
+              <option value="Remodelación">Quiero remodelar</option>
+              <option value="Otra consulta">Otra consulta</option>
+            </select>
+          </label>
           <label>Mensaje
-            <textarea name="mensaje" rows="5" required></textarea>
+            <textarea name="mensaje" rows="4" placeholder="Cuéntanos sobre el inmueble: ubicación, tipo, tamaño…" required></textarea>
           </label>
           <button type="submit" class="btn">Enviar mensaje</button>
           <p class="form__note" id="form-note" role="status"></p>
@@ -175,10 +232,23 @@
   <footer class="footer">
     <div class="container footer__inner">
       <p class="logo">Amara<span>Home</span></p>
+      <p>Captación, venta y remodelación de inmuebles en Bogotá</p>
       <p>&copy; <span id="year"></span> Amara Home. Todos los derechos reservados.</p>
     </div>
   </footer>
 
+  <!-- ===== Botón flotante de WhatsApp ===== -->
+  <a class="wa-float" data-whatsapp href="https://wa.me/570000000000" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+  </a>
+
+  <!-- ===== Detalle del inmueble ===== -->
+  <dialog class="modal" id="modal" aria-labelledby="modal-title">
+    <button class="modal__close" id="modal-close" aria-label="Cerrar">&times;</button>
+    <div id="modal-body"></div>
+  </dialog>
+
+  <script src="inmuebles.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

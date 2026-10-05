@@ -1,21 +1,32 @@
 # Amara Home: página web
 
-Sitio web de una sola página, con los colores de Amara Home (terracota, gris, blanco y negro). Funciona en computadora y celular.
-
-## Archivos
-
-- `index.html`: el contenido de la página (textos, secciones, datos de contacto)
-- `styles.css`: colores, tipografías y diseño
-- `script.js`: menú para celular, animaciones y formulario de contacto
+Sitio web de Amara Home para captación, venta y remodelación de inmuebles en Bogotá y municipios aledaños.
+Colores de la marca: terracota, gris, blanco y negro.
 
 ## Cómo verla
 
 Abre `index.html` con doble clic en tu navegador.
 
-## Cómo personalizarla
+## Cómo publicar un inmueble nuevo
 
-1. **Textos:** cambia los textos en `index.html`.
-2. **Contacto:** cambia la dirección, el teléfono, el correo y el número de WhatsApp (`https://wa.me/TUNUMERO`, sin `+` ni espacios).
-3. **Correo del formulario:** cambia `EMAIL_DESTINO` en `script.js`.
-4. **Fotos:** crea una carpeta `img/` con tus fotos y, en `styles.css`, cambia cada degradado por `background: url("img/foto.jpg") center/cover;` (hay comentarios que indican dónde).
-5. **Colores:** están al inicio de `styles.css`, en la sección `:root`.
+1. Sube las fotos a la carpeta `img/inmuebles/`, por ejemplo `ah-007-1.jpg`, `ah-007-2.jpg`.
+   Usa fotos horizontales y livianas (menos de 500 KB cada una).
+2. Abre `inmuebles.js`, copia un bloque `{ ... }`, pégalo al final de la lista y cambia sus datos.
+3. En `fotos`, escribe las rutas: `fotos: ["img/inmuebles/ah-007-1.jpg", "img/inmuebles/ah-007-2.jpg"]`.
+4. Para quitar un inmueble vendido, borra su bloque.
+
+Los filtros de tipo, ciudad y operación se actualizan solos con los inmuebles de la lista.
+Los inmuebles con `ejemplo: true` son de muestra: bórralos cuando subas los reales.
+
+## Datos de contacto
+
+- **WhatsApp y correo:** al inicio de `script.js` (`WHATSAPP` y `EMAIL_DESTINO`).
+- **Teléfono, oficina y horario:** en la sección Contacto de `index.html`.
+
+## Archivos
+
+- `index.html`: contenido de la página
+- `inmuebles.js`: lista de inmuebles publicados
+- `styles.css`: colores y diseño
+- `script.js`: catálogo, filtros, ventana de detalle, menú y formulario
+- `img/`: logos y fotos
