@@ -11,6 +11,8 @@
 //  - valor:         solo números, sin puntos ni signos (ej. 420000000)
 //  - fotos:         rutas de las fotos, ej. ["img/inmuebles/usaquen-1.jpg", "img/inmuebles/usaquen-2.jpg"]
 //                   la primera foto es la que se ve en la tarjeta
+//  - ubicacion:     [latitud, longitud] para un punto exacto en el mapa (opcional).
+//                   Si no se pone, el mapa usa el centro de la localidad o del municipio.
 //  - destacado:     true para mostrarlo primero (opcional)
 //  - ejemplo:       true SOLO en los inmuebles de muestra (bórralos al subir los reales)
 //

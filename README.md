@@ -42,3 +42,10 @@ Los inmuebles con `ejemplo: true` son de muestra: bórralos cuando subas los rea
 - `img/marca/generar_logos.py`: script que dibuja los logos (por si hay que ajustarlos).
 - `kit-marca/` y `amara-home-kit-marca.zip`: logos en PNG, SVG y PDF, fotos de perfil, portada y diseños para pautas en redes.
 - `img/marca/generar_kit.js`: script que genera el kit.
+
+## Mapa
+
+El catálogo tiene una vista de **Mapa** (botón "Mapa" junto al número de resultados).
+Cada inmueble aparece en el centro de su localidad (Bogotá) o municipio, según `zonas.js`, para mostrar la zona sin revelar la dirección.
+Para un punto exacto, agrega `ubicacion: [latitud, longitud]` al inmueble en `inmuebles.js`.
+El mapa usa Leaflet (en `vendor/leaflet/`) con mapas de OpenStreetMap y CARTO.

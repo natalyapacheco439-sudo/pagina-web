@@ -12,6 +12,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="img/marca/favicon-32.png">
   <link rel="apple-touch-icon" href="img/marca/favicon-180.png">
   <meta name="theme-color" content="#950606">
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -92,7 +93,17 @@
             <input type="search" name="texto" placeholder="Localidad, código…">
           </label>
         </form>
-        <p class="results-count" id="results-count" role="status"></p>
+        <div class="results-bar">
+          <p class="results-count" id="results-count" role="status"></p>
+          <div class="view-toggle" role="group" aria-label="Forma de ver los inmuebles">
+            <button type="button" id="ver-lista" aria-pressed="true">Lista</button>
+            <button type="button" id="ver-mapa" aria-pressed="false">Mapa</button>
+          </div>
+        </div>
+        <div class="map-wrap" id="map-wrap" hidden>
+          <div id="mapa" aria-label="Mapa con la ubicación de los inmuebles"></div>
+          <p class="map-note">Ubicación aproximada por localidad o municipio. Te compartimos la dirección exacta al agendar la visita.</p>
+        </div>
         <div class="listings" id="listings"></div>
       </div>
     </section>
@@ -249,6 +260,8 @@
     <div id="modal-body"></div>
   </dialog>
 
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="zonas.js"></script>
   <script src="inmuebles.js"></script>
   <script src="script.js"></script>
 </body>
