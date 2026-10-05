@@ -1,0 +1,55 @@
+KIT DE MARCA AMARA HOME
+=======================
+
+1-logos/
+  png/  Logos en alta resolución con fondo transparente. Úsalos en Canva, redes,
+        presentaciones y documentos.
+  svg/  Logos vectoriales: se ven nítidos a cualquier tamaño. Ideales para la web y
+        para enviar a imprentas o diseñadores.
+  pdf/  Logos vectoriales para imprenta (letreros, vallas, tarjetas, volantes).
+
+  Versiones:
+  - horizontal          Logo principal, sobre fondos claros.
+  - horizontal-blanco   Sobre fondos oscuros, rojos o encima de fotos (marca de agua).
+  - horizontal-negro    Impresión a una sola tinta (fotocopias, sellos).
+  - vertical            Formatos cuadrados o altos.
+  - icono               Solo el dibujo, para espacios pequeños.
+  - icono-rojo          Ícono con fondo rojo (app, favicon).
+
+2-perfil-y-portada/
+  foto-perfil.png         1080 x 1080  Instagram, Facebook, WhatsApp Business, TikTok.
+  foto-perfil-blanca.png  1080 x 1080  Alternativa con el logo completo.
+  portada-facebook.png    1640 x 624   Portada de la página de Facebook.
+
+3-pautas/
+  listas-para-usar/   Diseños completos de ejemplo. Los datos del inmueble y el número
+                      de WhatsApp son de ejemplo: pídele a Claude que los genere con los
+                      datos reales.
+  plantillas-con-espacio-para-foto/
+                      La zona de la foto es transparente. En Canva: sube la foto del
+                      inmueble, pon encima la plantilla y escribe los datos del inmueble
+                      en el espacio blanco.
+
+  Tamaños:
+  - post-*        1080 x 1080   Publicación de Instagram y Facebook.
+  - historia-*    1080 x 1920   Historias de Instagram, Facebook y estados de WhatsApp.
+  - anuncio-horizontal  1200 x 628   Anuncios de Facebook y enlaces compartidos.
+
+COLORES
+  Rojo Amara     #950606   (principal)
+  Rojo profundo  #6E0404
+  Carbón         #2B2B2B
+  Gris línea     #6E6E6C
+  Gris bloque    #D9D9D6
+  Blanco         #FFFFFF
+
+TIPOGRAFÍA (gratis en Google Fonts y en Canva)
+  Jost    Títulos, precios y textos destacados.
+  Nunito  Textos y descripciones.
+
+CONSEJOS
+  - Deja siempre espacio libre alrededor del logo.
+  - No estires el logo ni cambies sus colores.
+  - Pon el logo blanco en la esquina de todas las fotos de los inmuebles.
+  - En las historias, deja libres los 250 px de arriba y de abajo (ahí aparecen
+    los botones de Instagram).

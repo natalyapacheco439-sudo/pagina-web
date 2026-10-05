@@ -36,3 +36,5 @@ Los inmuebles con `ejemplo: true` son de muestra: bórralos cuando subas los rea
 - `marca.html`: manual de marca (logo, colores, tipografía y usos).
 - `img/marca/`: todas las versiones del logo en SVG y PNG, y los íconos para el navegador.
 - `img/marca/generar_logos.py`: script que dibuja los logos (por si hay que ajustarlos).
+- `kit-marca/` y `amara-home-kit-marca.zip`: logos en PNG, SVG y PDF, fotos de perfil, portada y diseños para pautas en redes.
+- `img/marca/generar_kit.js`: script que genera el kit.
