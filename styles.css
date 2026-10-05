@@ -396,6 +396,9 @@ select:focus, .filters input:focus { outline: none; border-color: var(--clay); }
 .footer { background: var(--black); color: #bdbdbb; padding: 2rem 0; }
 .footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .footer__logo { height: 44px; width: auto; display: block; }
+.footer__ig { display: inline-flex; align-items: center; gap: .5rem; color: var(--white); font-weight: 700; text-decoration: none; }
+.footer__ig svg { width: 22px; height: 22px; fill: currentColor; }
+.footer__ig:hover { color: var(--clay-light); }
 
 /* ===== Animación al hacer scroll ===== */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }

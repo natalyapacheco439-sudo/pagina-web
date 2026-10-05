@@ -1,6 +1,6 @@
 // ===== Datos de contacto (cámbialos aquí) =====
 const WHATSAPP = "573112785802"; // número con indicativo 57, sin + ni espacios
-const EMAIL_DESTINO = "hola@amarahome.com";
+const EMAIL_DESTINO = "amarahome05@gmail.com";
 
 // Menú para celulares
 const toggle = document.querySelector(".nav-toggle");
