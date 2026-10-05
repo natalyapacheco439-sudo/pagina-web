@@ -1,6 +1,6 @@
-# Página web de mi negocio
+# Amara Home: página web
 
-Sitio web de una sola página, con estilo natural y cálido. Funciona en computadora y celular.
+Sitio web de una sola página, con los colores de Amara Home (terracota, gris, blanco y negro). Funciona en computadora y celular.
 
 ## Archivos
 
@@ -14,7 +14,7 @@ Abre `index.html` con doble clic en tu navegador.
 
 ## Cómo personalizarla
 
-1. **Textos:** cambia "Tu Negocio" y los textos de ejemplo en `index.html`.
+1. **Textos:** cambia los textos en `index.html`.
 2. **Contacto:** cambia la dirección, el teléfono, el correo y el número de WhatsApp (`https://wa.me/TUNUMERO`, sin `+` ni espacios).
 3. **Correo del formulario:** cambia `EMAIL_DESTINO` en `script.js`.
 4. **Fotos:** crea una carpeta `img/` con tus fotos y, en `styles.css`, cambia cada degradado por `background: url("img/foto.jpg") center/cover;` (hay comentarios que indican dónde).

@@ -36,7 +36,7 @@ revealables.forEach((el) => observer.observe(el));
 // Formulario: abre el correo del visitante con el mensaje ya escrito
 const form = document.getElementById("contact-form");
 const note = document.getElementById("form-note");
-const EMAIL_DESTINO = "hola@tunegocio.com";
+const EMAIL_DESTINO = "hola@amarahome.com";
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
