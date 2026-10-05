@@ -86,6 +86,7 @@ a { color: var(--clay-dark); }
   text-decoration: none;
 }
 .logo span { color: var(--clay); }
+.logo__img { display: block; height: 46px; width: auto; }
 .nav { display: flex; align-items: center; gap: 1.6rem; }
 .nav a:not(.btn) { color: var(--text); text-decoration: none; font-weight: 600; }
 .nav a:not(.btn):hover { color: var(--clay); }
@@ -116,9 +117,12 @@ a { color: var(--clay-dark); }
   aspect-ratio: 1;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  /* Reemplaza por: background: url("img/nosotros.jpg") center/cover; */
-  background: linear-gradient(135deg, #b5b5b2, #4a4a48);
+  background: var(--white);
+  display: grid;
+  place-items: center;
+  padding: 12%;
 }
+.about__image img { width: 100%; height: auto; }
 
 .checklist { list-style: none; margin-top: 1.4rem; }
 .checklist li { padding-left: 2rem; position: relative; margin-bottom: .6rem; font-weight: 600; }
