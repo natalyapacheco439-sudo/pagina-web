@@ -30,3 +30,9 @@ Los inmuebles con `ejemplo: true` son de muestra: bórralos cuando subas los rea
 - `styles.css`: colores y diseño
 - `script.js`: catálogo, filtros, ventana de detalle, menú y formulario
 - `img/`: logos y fotos
+
+## Marca
+
+- `marca.html`: manual de marca (logo, colores, tipografía y usos).
+- `img/marca/`: todas las versiones del logo en SVG y PNG, y los íconos para el navegador.
+- `img/marca/generar_logos.py`: script que dibuja los logos (por si hay que ajustarlos).

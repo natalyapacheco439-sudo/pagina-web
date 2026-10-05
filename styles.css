@@ -26,7 +26,7 @@ body {
 }
 
 h1, h2, h3 {
-  font-family: "Fraunces", Georgia, serif;
+  font-family: "Jost", "Nunito", system-ui, sans-serif;
   color: var(--black);
   line-height: 1.2;
 }
@@ -80,14 +80,14 @@ a { color: var(--clay-dark); }
 }
 .header__inner { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; }
 .logo {
-  font-family: "Fraunces", serif;
+  font-family: "Jost", system-ui, sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--black);
   text-decoration: none;
 }
 .logo span { color: var(--clay); }
-.logo__img { display: block; height: 46px; width: auto; }
+.logo__img { display: block; height: 48px; width: auto; }
 .nav { display: flex; align-items: center; gap: 1.6rem; }
 .nav a:not(.btn) { color: var(--text); text-decoration: none; font-weight: 600; }
 .nav a:not(.btn):hover { color: var(--clay); }
@@ -122,7 +122,7 @@ a { color: var(--clay-dark); }
   background: var(--white);
   display: grid;
   place-items: center;
-  padding: 12%;
+  padding: 16%;
 }
 .about__image img { width: 100%; height: auto; }
 
@@ -178,7 +178,7 @@ a { color: var(--clay-dark); }
   border-radius: 50%;
   background: var(--clay);
   color: var(--white);
-  font-family: "Fraunces", serif;
+  font-family: "Jost", system-ui, sans-serif;
   font-size: 1.4rem;
   font-weight: 700;
 }
@@ -273,7 +273,7 @@ select:focus, .filters input:focus { outline: none; border-color: var(--clay); }
 .badge--sample { left: auto; right: .8rem; background: var(--black); }
 .listing__body { padding: 1.3rem 1.4rem 1rem; }
 .listing__body h3 { font-size: 1.15rem; margin: .2rem 0 .3rem; }
-.listing__price { font-family: "Fraunces", serif; font-size: 1.45rem; font-weight: 700; color: var(--clay-dark); }
+.listing__price { font-family: "Jost", system-ui, sans-serif; font-size: 1.45rem; font-weight: 700; color: var(--clay-dark); }
 .listing__price small { font-size: .9rem; color: var(--muted); }
 .listing__place { color: var(--muted); font-size: .95rem; }
 .listing__features { list-style: none; display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .9rem; }
@@ -395,8 +395,7 @@ select:focus, .filters input:focus { outline: none; border-color: var(--clay); }
 /* ===== Pie ===== */
 .footer { background: var(--black); color: #bdbdbb; padding: 2rem 0; }
 .footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
-.footer .logo { color: var(--bg); }
-.footer .logo span { color: var(--clay-light); }
+.footer__logo { height: 44px; width: auto; display: block; }
 
 /* ===== Animación al hacer scroll ===== */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
