@@ -22,9 +22,9 @@ KIT DE MARCA AMARA HOME
   portada-facebook.png    1640 x 624   Portada de la página de Facebook.
 
 3-pautas/
-  listas-para-usar/   Diseños completos de ejemplo. Los datos del inmueble y el número
-                      de WhatsApp son de ejemplo: pídele a Claude que los genere con los
-                      datos reales.
+  listas-para-usar/   Diseños completos con el WhatsApp de Amara Home (+57 311 278 5802).
+                      Los datos del inmueble son de ejemplo: pídele a Claude que los
+                      genere con los datos reales.
   plantillas-con-espacio-para-foto/
                       La zona de la foto es transparente. En Canva: sube la foto del
                       inmueble, pon encima la plantilla y escribe los datos del inmueble

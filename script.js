@@ -1,5 +1,5 @@
 // ===== Datos de contacto (cámbialos aquí) =====
-const WHATSAPP = "570000000000"; // número con indicativo 57, sin + ni espacios
+const WHATSAPP = "573112785802"; // número con indicativo 57, sin + ni espacios
 const EMAIL_DESTINO = "hola@amarahome.com";
 
 // Menú para celulares
