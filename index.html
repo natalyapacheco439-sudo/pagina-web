@@ -40,13 +40,13 @@
         <div class="hero__text">
           <p class="eyebrow">Bogotá y alrededores</p>
           <h1>Encuentra tu próximo inmueble</h1>
-          <p class="hero__lead">Apartamentos, casas, lotes y locales en Bogotá y municipios aledaños, con asesoría cercana de principio a fin.</p>
+          <p class="hero__lead">Inmuebles en venta en Bogotá y municipios aledaños, con asesoría cercana de principio a fin.</p>
           <form class="search" id="hero-search">
-            <label class="search__field">Tipo
-              <select name="tipo" data-options="tipo"><option value="">Todos</option></select>
-            </label>
             <label class="search__field">Ciudad
-              <select name="ciudad" data-options="ciudad"><option value="">Todas</option></select>
+              <select name="ciudad" id="hero-ciudad"><option value="">Todas</option></select>
+            </label>
+            <label class="search__field">Localidad
+              <select name="localidad" id="hero-localidad"><option value="">Todas</option></select>
             </label>
             <button type="submit" class="btn">Buscar</button>
           </form>
@@ -61,17 +61,14 @@
       <div class="container">
         <div class="section__head">
           <p class="eyebrow">Disponibles ahora</p>
-          <h2>Nuestros inmuebles</h2>
+          <h2>Inmuebles en venta</h2>
         </div>
         <form class="filters" id="filters">
-          <label>Operación
-            <select name="operacion" data-options="operacion"><option value="">Todas</option></select>
-          </label>
-          <label>Tipo
-            <select name="tipo" data-options="tipo"><option value="">Todos</option></select>
-          </label>
           <label>Ciudad
-            <select name="ciudad" data-options="ciudad"><option value="">Todas</option></select>
+            <select name="ciudad" id="filtro-ciudad"><option value="">Todas</option></select>
+          </label>
+          <label>Localidad
+            <select name="localidad" id="filtro-localidad"><option value="">Todas</option></select>
           </label>
           <label>Habitaciones
             <select name="habitaciones">
@@ -92,7 +89,7 @@
             </select>
           </label>
           <label>Buscar
-            <input type="search" name="texto" placeholder="Barrio, código…">
+            <input type="search" name="texto" placeholder="Localidad, código…">
           </label>
         </form>
         <p class="results-count" id="results-count" role="status"></p>
@@ -105,7 +102,7 @@
       <div class="container cta__inner">
         <div>
           <p class="eyebrow">Propietarios</p>
-          <h2>¿Quieres vender o arrendar tu inmueble?</h2>
+          <h2>¿Quieres vender tu inmueble?</h2>
           <p>Lo evaluamos sin costo, lo publicamos en nuestra página y lo promocionamos para encontrar al cliente indicado. Te acompañamos hasta la firma.</p>
         </div>
         <a class="btn" href="#contacto" data-interes="Vender mi inmueble">Quiero publicar mi inmueble</a>
@@ -216,13 +213,13 @@
           <label>¿En qué te podemos ayudar?
             <select name="interes" required>
               <option value="Vender mi inmueble">Quiero vender mi inmueble</option>
-              <option value="Comprar un inmueble">Quiero comprar o arrendar un inmueble</option>
+              <option value="Comprar un inmueble">Quiero comprar un inmueble</option>
               <option value="Remodelación">Quiero remodelar</option>
               <option value="Otra consulta">Otra consulta</option>
             </select>
           </label>
           <label>Mensaje
-            <textarea name="mensaje" rows="4" placeholder="Cuéntanos sobre el inmueble: ubicación, tipo, tamaño…" required></textarea>
+            <textarea name="mensaje" rows="4" placeholder="Cuéntanos sobre el inmueble: ciudad, localidad, metros…" required></textarea>
           </label>
           <button type="submit" class="btn">Enviar mensaje</button>
           <p class="form__note" id="form-note" role="status"></p>

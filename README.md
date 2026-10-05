@@ -9,13 +9,17 @@ Abre `index.html` con doble clic en tu navegador.
 
 ## Cómo publicar un inmueble nuevo
 
-1. Sube las fotos a la carpeta `img/inmuebles/`, por ejemplo `ah-007-1.jpg`, `ah-007-2.jpg`.
-   Usa fotos horizontales y livianas (menos de 500 KB cada una).
+Amara Home publica solo inmuebles en venta. Cada inmueble lleva: ciudad, localidad, m², habitaciones,
+baños, parqueaderos, descripción corta, valor y fotos.
+
+1. Sube las fotos a la carpeta `img/inmuebles/`, por ejemplo `usaquen-1.jpg`, `usaquen-2.jpg`.
+   Usa fotos horizontales y livianas (menos de 500 KB cada una). La primera es la de la tarjeta.
 2. Abre `inmuebles.js`, copia un bloque `{ ... }`, pégalo al final de la lista y cambia sus datos.
-3. En `fotos`, escribe las rutas: `fotos: ["img/inmuebles/ah-007-1.jpg", "img/inmuebles/ah-007-2.jpg"]`.
+3. En `fotos`, escribe las rutas: `fotos: ["img/inmuebles/usaquen-1.jpg", "img/inmuebles/usaquen-2.jpg"]`.
 4. Para quitar un inmueble vendido, borra su bloque.
 
-Los filtros de tipo, ciudad y operación se actualizan solos con los inmuebles de la lista.
+El código de cada inmueble (AH-001, AH-002…) se asigna solo según el orden de la lista.
+Los filtros de ciudad y localidad se llenan solos con los inmuebles publicados.
 Los inmuebles con `ejemplo: true` son de muestra: bórralos cuando subas los reales.
 
 ## Datos de contacto
