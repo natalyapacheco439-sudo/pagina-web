@@ -86,10 +86,10 @@ function tarjeta(i) {
         <div class="listing__photo">
           ${foto(i)}
           <span class="badge">En venta</span>
+          <span class="listing__price-tag">${formatoPrecio(i.valor)}</span>
           ${i.ejemplo ? '<span class="badge badge--sample">Ejemplo</span>' : ""}
         </div>
         <div class="listing__body">
-          ${precioHTML(i)}
           <h3>${escapar(ubicacion(i))}</h3>
           ${caracteristicasHTML(i)}
           <p class="listing__desc">${escapar(i.descripcion)}</p>
@@ -224,6 +224,7 @@ document.getElementById("hero-search").addEventListener("submit", (e) => {
   filters.elements.ciudad.value = datos.get("ciudad");
   llenarLocalidades(filters.elements.localidad, datos.get("ciudad"));
   filters.elements.localidad.value = datos.get("localidad");
+  filters.elements.habitaciones.value = datos.get("habitaciones");
   mostrarInmuebles();
   document.getElementById("inmuebles").scrollIntoView({ behavior: "smooth" });
 });
