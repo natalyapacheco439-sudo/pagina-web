@@ -1,9 +1,10 @@
-/* ===== Paleta Amara Home: terracota, gris, blanco y negro ===== */
+/* ===== Paleta Amara Home: rojo #950606, gris, blanco y negro ===== */
 :root {
   --bg: #fbfaf8;
   --gray-light: #ececea;
-  --clay: #c0663f;
-  --clay-dark: #9c4f2e;
+  --clay: #950606;
+  --clay-dark: #6e0404;
+  --clay-light: #e8a3a3;
   --gray: #6e6e6c;
   --black: #1c1c1c;
   --text: #2a2a2a;
@@ -104,7 +105,7 @@ a { color: var(--clay-dark); }
   border-radius: 200px 200px var(--radius) var(--radius);
   box-shadow: var(--shadow);
   /* Reemplaza por: background: url("img/portada.jpg") center/cover; */
-  background: linear-gradient(160deg, #e2a688, var(--clay) 60%, var(--clay-dark));
+  background: linear-gradient(160deg, #c94a4a, var(--clay) 60%, var(--clay-dark));
 }
 
 /* ===== Secciones ===== */
@@ -298,7 +299,7 @@ select:focus, .filters input:focus { outline: none; border-color: var(--clay); }
 /* ===== Vende tu inmueble ===== */
 .cta { background: var(--black); color: #d6d6d4; padding: 4rem 0; }
 .cta h2 { color: var(--white); }
-.cta .eyebrow { color: #e2a688; }
+.cta .eyebrow { color: var(--clay-light); }
 .cta__inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
 .cta__inner > div { max-width: 640px; }
 .cta .btn { flex-shrink: 0; }
@@ -395,6 +396,7 @@ select:focus, .filters input:focus { outline: none; border-color: var(--clay); }
 .footer { background: var(--black); color: #bdbdbb; padding: 2rem 0; }
 .footer__inner { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
 .footer .logo { color: var(--bg); }
+.footer .logo span { color: var(--clay-light); }
 
 /* ===== Animación al hacer scroll ===== */
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }

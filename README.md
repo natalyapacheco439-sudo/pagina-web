@@ -1,7 +1,7 @@
 # Amara Home: página web
 
 Sitio web de Amara Home para captación, venta y remodelación de inmuebles en Bogotá y municipios aledaños.
-Colores de la marca: terracota, gris, blanco y negro.
+Colores de la marca: rojo #950606 (principal), gris, blanco y negro.
 
 ## Cómo verla
 
