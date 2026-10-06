@@ -181,7 +181,7 @@ function visibles() {
     .filter((c) => !f.estado || c.estado === f.estado)
     .filter((c) => !f.interes || c.interes === f.interes)
     .filter((c) => !f.origen || c.origen === f.origen)
-    .filter((c) => !texto || [c.nombre, c.telefono, c.correo, c.mensaje, c.notas].join(" ").toLowerCase().includes(texto))
+    .filter((c) => !texto || [c.nombre, c.telefono, c.correo, c.mensaje, c.notas, c.campana].join(" ").toLowerCase().includes(texto))
     .sort(orden);
 }
 
@@ -249,7 +249,7 @@ function abrirFicha(c) {
     fichaForm[campo].value = c[campo] || "";
   }
   $("#ficha-titulo").textContent = c.id ? c.nombre : "Nuevo cliente";
-  $("#ficha-sub").textContent = c.id ? `Llegó por ${c.origen} el ${fechaBonita(c.fecha)}` : "Regístralo para hacerle seguimiento";
+  $("#ficha-sub").textContent = c.id ? `Llegó por ${c.origen}${c.campana ? ` (${c.campana})` : ""} el ${fechaBonita(c.fecha)}` : "Regístralo para hacerle seguimiento";
   $("#eliminar").hidden = !c.id;
   pintarHistorial(c.notas);
   pintarPlantillas(c);
@@ -408,7 +408,7 @@ $("#exportar").addEventListener("click", () => {
   const columnas = [
     ["fecha", "Fecha"], ["nombre", "Nombre"], ["telefono", "Teléfono"], ["correo", "Correo"],
     ["interes", "Interés"], ["estado", "Estado"], ["seguimiento", "Próximo seguimiento"],
-    ["origen", "Origen"], ["mensaje", "Mensaje"], ["notas", "Notas"],
+    ["origen", "Origen"], ["campana", "Campaña"], ["mensaje", "Mensaje"], ["notas", "Notas"],
   ];
   const celda = (v) => {
     let t = String(v ?? "");
@@ -440,7 +440,7 @@ function clientesEjemplo() {
   return [
     { ...base, id: "e1", fecha: `${enDias(0)} 09:12`, nombre: "Laura Gómez", telefono: "3001234567", correo: "laura@ejemplo.com", interes: "Vender mi inmueble", mensaje: "Tengo un apartamento de 72 m² en Suba, 3 habitaciones. Quiero venderlo.", origen: "Página web", estado: "Nuevo", seguimiento: enDias(0) },
     { ...base, id: "e2", fecha: `${enDias(-6)} 16:40`, nombre: "Andrés Rojas", telefono: "3157654321", interes: "Comprar un inmueble", mensaje: "Busco casa en Chía, presupuesto 500 millones.", origen: "Anuncio Instagram", estado: "Contactado", seguimiento: enDias(-2), notas: `[${enDias(-5)} 10:05] Le envié 3 opciones por WhatsApp` },
-    { ...base, id: "e3", fecha: `${enDias(-10)} 11:20`, nombre: "Marcela Pinzón", telefono: "3209876543", interes: "Remodelación", mensaje: "Quiero remodelar cocina y dos baños.", origen: "Anuncio TikTok", estado: "Visita agendada", seguimiento: enDias(2), notas: `[${enDias(-3)} 15:30] Visita el sábado 10 a. m.` },
+    { ...base, id: "e3", fecha: `${enDias(-10)} 11:20`, nombre: "Marcela Pinzón", telefono: "3209876543", interes: "Remodelación", mensaje: "Quiero remodelar cocina y dos baños.", origen: "Anuncio TikTok", campana: "Remodela tu cocina", estado: "Visita agendada", seguimiento: enDias(2), notas: `[${enDias(-3)} 15:30] Visita el sábado 10 a. m.` },
     { ...base, id: "e4", fecha: `${enDias(-30)} 08:00`, nombre: "Jorge Medina", telefono: "3112223344", interes: "Vender mi inmueble", mensaje: "Casa en Usaquén.", origen: "Referido", estado: "Cerrado", seguimiento: "", notas: `[${enDias(-2)} 12:00] Firmó contrato de exclusividad` },
   ];
 }

@@ -17,7 +17,7 @@ const AVISAR_A = "amarahome05@gmail.com";
 const HOJA = "Clientes";
 const COLUMNAS = [
   "id", "fecha", "nombre", "correo", "telefono", "interes", "mensaje",
-  "origen", "estado", "seguimiento", "notas", "actualizado",
+  "origen", "estado", "seguimiento", "notas", "actualizado", "campana",
 ];
 const ESTADOS = ["Nuevo", "Contactado", "Visita agendada", "Negociando", "Cerrado", "Perdido"];
 const INTERESES = ["Vender mi inmueble", "Comprar un inmueble", "Remodelación", "Otra consulta"];
@@ -54,6 +54,7 @@ function doPost(e) {
       case "listar": return json_({ ok: true, clientes: listar_() });
       case "guardar": return json_({ ok: true, cliente: guardar_(datos.cliente || {}) });
       case "eliminar": return json_({ ok: true, eliminado: eliminar_(datos.id) });
+      case "registrar": return json_(Object.assign({ ok: true }, registrar_(datos.cliente || {})));
       default: return json_({ ok: false, error: "Acción desconocida." });
     }
   } catch (err) {
@@ -97,7 +98,7 @@ function listar_() {
     .filter((f) => f[0] !== "")
     .map((f) => {
       const c = {};
-      COLUMNAS.forEach((col, i) => (c[col] = f[i] instanceof Date ? fecha_(f[i]) : String(f[i])));
+      COLUMNAS.forEach((col, i) => (c[col] = f[i] instanceof Date ? fecha_(f[i]) : String(f[i] == null ? "" : f[i])));
       return c;
     });
 }
@@ -120,10 +121,7 @@ function guardar_(c) {
 
   const n = filaDe_(c.id);
   if (n) {
-    const actual = {};
-    const valores = hoja.getRange(n, 1, 1, COLUMNAS.length).getValues()[0];
-    COLUMNAS.forEach((col, i) => (actual[col] = valores[i] instanceof Date ? fecha_(valores[i]) : String(valores[i])));
-    const cliente = Object.assign(actual, datos);
+    const cliente = Object.assign(leerFila_(hoja, n), datos);
     hoja.getRange(n, 1, 1, COLUMNAS.length).setValues([fila_(cliente)]);
     return cliente;
   }
@@ -131,6 +129,49 @@ function guardar_(c) {
   const cliente = Object.assign({ id: Utilities.getUuid().slice(0, 8), fecha: ahora_() }, datos);
   hoja.appendRow(fila_(cliente));
   return cliente;
+}
+
+// Para el agente de WhatsApp: si el teléfono ya está, actualiza al cliente y le suma la nota;
+// si no, lo crea como "Nuevo" para contactar hoy.
+function registrar_(c) {
+  const telefono = texto_(c.telefono, 40);
+  if (!telefono) throw new Error("Falta el teléfono.");
+  const hoja = hoja_();
+  const nota = texto_(c.nota, 3000);
+  const n = filaDeTelefono_(telefono);
+
+  if (n) {
+    const cliente = leerFila_(hoja, n);
+    if (texto_(c.nombre) && !cliente.nombre) cliente.nombre = texto_(c.nombre, 120);
+    if (texto_(c.correo) && !cliente.correo) cliente.correo = texto_(c.correo, 120);
+    if (INTERESES.indexOf(c.interes) >= 0) cliente.interes = c.interes;
+    if (texto_(c.campana)) cliente.campana = texto_(c.campana, 200);
+    if (["Cerrado", "Perdido"].indexOf(cliente.estado) >= 0) cliente.estado = "Nuevo";
+    if (!cliente.seguimiento) cliente.seguimiento = hoy_();
+    if (nota) cliente.notas = `[${ahora_()}] ${nota}` + (cliente.notas ? "\n" + cliente.notas : "");
+    cliente.actualizado = ahora_();
+    hoja.getRange(n, 1, 1, COLUMNAS.length).setValues([fila_(cliente)]);
+    return { nuevo: false, cliente: cliente };
+  }
+
+  const cliente = {
+    id: Utilities.getUuid().slice(0, 8),
+    fecha: ahora_(),
+    nombre: texto_(c.nombre, 120) || "Sin nombre",
+    correo: texto_(c.correo, 120),
+    telefono: telefono,
+    interes: opcion_(c.interes, INTERESES, "Otra consulta"),
+    mensaje: texto_(c.mensaje, 3000),
+    origen: texto_(c.origen, 40) || "WhatsApp directo",
+    estado: "Nuevo",
+    seguimiento: hoy_(),
+    notas: nota ? `[${ahora_()}] ${nota}` : "",
+    actualizado: ahora_(),
+    campana: texto_(c.campana, 200),
+  };
+  hoja.appendRow(fila_(cliente));
+  avisar_(cliente);
+  return { nuevo: true, cliente: cliente };
 }
 
 function eliminar_(id) {
@@ -147,12 +188,36 @@ function hoja_() {
   let hoja = libro.getSheetByName(HOJA);
   if (!hoja) {
     hoja = libro.insertSheet(HOJA);
-    // Todo como texto, para que Sheets no cambie teléfonos ni fechas.
-    hoja.getRange(1, 1, hoja.getMaxRows(), COLUMNAS.length).setNumberFormat("@");
-    hoja.getRange(1, 1, 1, COLUMNAS.length).setValues([COLUMNAS]).setFontWeight("bold");
     hoja.setFrozenRows(1);
   }
+  // Crea los títulos, y agrega los de columnas nuevas si el código se actualizó.
+  const titulos = hoja.getRange(1, 1, 1, COLUMNAS.length);
+  if (titulos.getValues()[0].join() !== COLUMNAS.join()) {
+    // Todo como texto, para que Sheets no cambie teléfonos ni fechas.
+    hoja.getRange(1, 1, hoja.getMaxRows(), COLUMNAS.length).setNumberFormat("@");
+    titulos.setValues([COLUMNAS]).setFontWeight("bold");
+  }
   return hoja;
+}
+
+function leerFila_(hoja, n) {
+  const valores = hoja.getRange(n, 1, 1, COLUMNAS.length).getValues()[0];
+  const c = {};
+  COLUMNAS.forEach((col, i) => (c[col] = valores[i] instanceof Date ? fecha_(valores[i]) : String(valores[i])));
+  return c;
+}
+
+// Compara los últimos 10 dígitos, para que "+57 311…" y "311…" sean el mismo número.
+function filaDeTelefono_(telefono) {
+  const buscado = String(telefono).replace(/\D/g, "").slice(-10);
+  if (buscado.length < 7) return 0;
+  const col = COLUMNAS.indexOf("telefono") + 1;
+  const hoja = hoja_();
+  const tels = hoja.getRange(1, col, hoja.getLastRow(), 1).getValues();
+  for (let i = 1; i < tels.length; i++) {
+    if (String(tels[i][0]).replace(/\D/g, "").slice(-10) === buscado) return i + 1;
+  }
+  return 0;
 }
 
 function filaDe_(id) {
@@ -196,9 +261,9 @@ function avisar_(c) {
   try {
     const correo = {
       to: AVISAR_A,
-      subject: `Nuevo cliente en la página: ${c.nombre} (${c.interes})`,
+      subject: `Nuevo cliente (${c.origen}): ${c.nombre} - ${c.interes}`,
       body:
-        `${c.nombre} escribió desde la página web.\n\n` +
+        `${c.nombre} llegó por ${c.origen}${c.campana ? " (" + c.campana + ")" : ""}.\n\n` +
         `Interés: ${c.interes}\nCorreo: ${c.correo || "-"}\nTeléfono: ${c.telefono || "-"}\n\n` +
         `Mensaje:\n${c.mensaje || "-"}\n\nRespóndele desde el CRM.`,
     };

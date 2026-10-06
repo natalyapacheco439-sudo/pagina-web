@@ -52,8 +52,24 @@ Mientras `CRM_URL` esté vacío, el formulario sigue abriendo el correo del visi
 
 ## Si cambias el código de Apps Script
 
-Después de editarlo, ve a **Implementar > Administrar implementaciones**, toca el lápiz,
-en **Versión** elige **Nueva versión** e **Implementar**. Así la dirección sigue siendo la misma.
+1. Antes de pegar el código nuevo, copia tu clave (la línea `const CLAVE = "…"`) y vuelve a ponerla después.
+2. Guarda y ve a **Implementar > Administrar implementaciones**, toca el lápiz,
+   en **Versión** elige **Nueva versión** e **Implementar**. Así la dirección sigue siendo la misma.
+
+La hoja agrega sola las columnas nuevas (por ejemplo `campana`) la próxima vez que se use.
+
+## Para el agente de WhatsApp
+
+El agente guarda a los clientes con la acción `registrar` (necesita la clave):
+
+```json
+{ "accion": "registrar", "clave": "…", "cliente": {
+  "telefono": "+57 311 222 3344", "nombre": "Ana", "interes": "Vender mi inmueble",
+  "origen": "Anuncio TikTok", "campana": "Vende tu casa", "mensaje": "…", "nota": "…" } }
+```
+
+Si el teléfono ya existe, no crea otro cliente: le suma la nota arriba del historial y,
+si estaba Cerrado o Perdido, lo vuelve a poner como Nuevo. Responde `{ ok, nuevo, cliente }`.
 
 ## Editar las respuestas rápidas
 
