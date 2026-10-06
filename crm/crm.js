@@ -2,7 +2,12 @@
 
 const ESTADOS = ["Nuevo", "Contactado", "Visita agendada", "Negociando", "Cerrado", "Perdido"];
 const INTERESES = ["Vender mi inmueble", "Comprar un inmueble", "Remodelación", "Otra consulta"];
-const ORIGENES = ["Página web", "WhatsApp", "Instagram", "Llamada", "Referido", "Otro"];
+// De dónde llegó el cliente. Puedes agregar más; la hoja de Google acepta cualquiera.
+const ORIGENES = [
+  "Anuncio Instagram", "Anuncio Facebook", "Anuncio TikTok",
+  "WhatsApp directo", "Instagram", "Facebook", "TikTok",
+  "Página web", "Llamada", "Referido", "Otro",
+];
 const FINALES = ["Cerrado", "Perdido"];
 const GUARDADO = "amara-crm";
 
@@ -137,6 +142,7 @@ const filtros = $("#filtros");
 const opciones = (lista) => lista.map((v) => `<option>${esc(v)}</option>`).join("");
 filtros.estado.insertAdjacentHTML("beforeend", opciones(ESTADOS));
 filtros.interes.insertAdjacentHTML("beforeend", opciones(INTERESES));
+filtros.origen.insertAdjacentHTML("beforeend", opciones(ORIGENES));
 filtros.addEventListener("input", pintar);
 filtros.addEventListener("submit", (e) => e.preventDefault());
 
@@ -174,6 +180,7 @@ function visibles() {
     .filter(VISTAS[f.vista])
     .filter((c) => !f.estado || c.estado === f.estado)
     .filter((c) => !f.interes || c.interes === f.interes)
+    .filter((c) => !f.origen || c.origen === f.origen)
     .filter((c) => !texto || [c.nombre, c.telefono, c.correo, c.mensaje, c.notas].join(" ").toLowerCase().includes(texto))
     .sort(orden);
 }
@@ -193,6 +200,7 @@ function pintar() {
   document.querySelectorAll(".cifra").forEach((b) => b.classList.toggle("cifra--activa", b.dataset.vista === filtros.vista.value));
 
   const lista = visibles();
+  $("#conteo").textContent = lista.length ? `${lista.length} ${lista.length === 1 ? "cliente" : "clientes"}` : "";
   $("#vacio").hidden = lista.length > 0;
   $("#lista").innerHTML = lista
     .map(
@@ -225,15 +233,18 @@ const ficha = $("#ficha");
 const fichaForm = $("#ficha-form");
 fichaForm.interes.innerHTML = opciones(INTERESES);
 fichaForm.estado.innerHTML = opciones(ESTADOS);
-fichaForm.origen.innerHTML = opciones(ORIGENES);
+const pintarOrigenes = () => (fichaForm.origen.innerHTML = opciones(ORIGENES));
 
 $("#nuevo-cliente").addEventListener("click", () =>
-  abrirFicha({ nombre: "", telefono: "", correo: "", interes: INTERESES[0], estado: "Nuevo", origen: "WhatsApp", seguimiento: hoy(), mensaje: "", notas: "" })
+  abrirFicha({ nombre: "", telefono: "", correo: "", interes: INTERESES[0], estado: "Nuevo", origen: ORIGENES[0], seguimiento: hoy(), mensaje: "", notas: "" })
 );
 
 function abrirFicha(c) {
   abierto = c;
   fichaForm.reset();
+  pintarOrigenes();
+  // Un origen que ya no está en la lista se conserva para no cambiarlo al guardar.
+  if (c.origen && !ORIGENES.includes(c.origen)) fichaForm.origen.insertAdjacentHTML("beforeend", opciones([c.origen]));
   for (const campo of ["nombre", "telefono", "correo", "interes", "estado", "origen", "seguimiento", "mensaje"]) {
     fichaForm[campo].value = c[campo] || "";
   }
@@ -428,8 +439,8 @@ function clientesEjemplo() {
   const base = { correo: "", notas: "", actualizado: ahora() };
   return [
     { ...base, id: "e1", fecha: `${enDias(0)} 09:12`, nombre: "Laura Gómez", telefono: "3001234567", correo: "laura@ejemplo.com", interes: "Vender mi inmueble", mensaje: "Tengo un apartamento de 72 m² en Suba, 3 habitaciones. Quiero venderlo.", origen: "Página web", estado: "Nuevo", seguimiento: enDias(0) },
-    { ...base, id: "e2", fecha: `${enDias(-6)} 16:40`, nombre: "Andrés Rojas", telefono: "3157654321", interes: "Comprar un inmueble", mensaje: "Busco casa en Chía, presupuesto 500 millones.", origen: "Instagram", estado: "Contactado", seguimiento: enDias(-2), notas: `[${enDias(-5)} 10:05] Le envié 3 opciones por WhatsApp` },
-    { ...base, id: "e3", fecha: `${enDias(-10)} 11:20`, nombre: "Marcela Pinzón", telefono: "3209876543", interes: "Remodelación", mensaje: "Quiero remodelar cocina y dos baños.", origen: "WhatsApp", estado: "Visita agendada", seguimiento: enDias(2), notas: `[${enDias(-3)} 15:30] Visita el sábado 10 a. m.` },
+    { ...base, id: "e2", fecha: `${enDias(-6)} 16:40`, nombre: "Andrés Rojas", telefono: "3157654321", interes: "Comprar un inmueble", mensaje: "Busco casa en Chía, presupuesto 500 millones.", origen: "Anuncio Instagram", estado: "Contactado", seguimiento: enDias(-2), notas: `[${enDias(-5)} 10:05] Le envié 3 opciones por WhatsApp` },
+    { ...base, id: "e3", fecha: `${enDias(-10)} 11:20`, nombre: "Marcela Pinzón", telefono: "3209876543", interes: "Remodelación", mensaje: "Quiero remodelar cocina y dos baños.", origen: "Anuncio TikTok", estado: "Visita agendada", seguimiento: enDias(2), notas: `[${enDias(-3)} 15:30] Visita el sábado 10 a. m.` },
     { ...base, id: "e4", fecha: `${enDias(-30)} 08:00`, nombre: "Jorge Medina", telefono: "3112223344", interes: "Vender mi inmueble", mensaje: "Casa en Usaquén.", origen: "Referido", estado: "Cerrado", seguimiento: "", notas: `[${enDias(-2)} 12:00] Firmó contrato de exclusividad` },
   ];
 }

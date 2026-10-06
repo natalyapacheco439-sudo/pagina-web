@@ -21,7 +21,6 @@ const COLUMNAS = [
 ];
 const ESTADOS = ["Nuevo", "Contactado", "Visita agendada", "Negociando", "Cerrado", "Perdido"];
 const INTERESES = ["Vender mi inmueble", "Comprar un inmueble", "Remodelación", "Otra consulta"];
-const ORIGENES = ["Página web", "WhatsApp", "Instagram", "Llamada", "Referido", "Otro"];
 
 /** Ejecútala una vez desde el editor para crear la hoja "Clientes". */
 function configurar() {
@@ -111,7 +110,7 @@ function guardar_(c) {
     telefono: texto_(c.telefono, 40),
     interes: opcion_(c.interes, INTERESES, "Otra consulta"),
     mensaje: texto_(c.mensaje, 3000),
-    origen: opcion_(c.origen, ORIGENES, "Otro"),
+    origen: texto_(c.origen, 40) || "Otro",
     estado: opcion_(c.estado, ESTADOS, "Nuevo"),
     seguimiento: /^\d{4}-\d{2}-\d{2}$/.test(c.seguimiento) ? c.seguimiento : "",
     notas: texto_(c.notas, 20000),

@@ -9,7 +9,10 @@ responderlo, anotar lo que hablaste y saber a quién toca llamar hoy.
 - **Recordatorios:** arriba ves los clientes nuevos sin responder, los seguimientos atrasados y los de hoy.
 - **Exportar a Excel:** descarga en un archivo `.csv` los clientes que estás viendo.
 - **Aviso por correo:** te llega un correo cada vez que alguien escribe desde la página.
-- También puedes registrar a mano clientes que te escriben por WhatsApp, Instagram o por llamada (**+ Cliente**).
+- **Clientes de tus anuncios:** los que te escriben por WhatsApp desde una campaña de Instagram, Facebook o TikTok
+  los registras con **+ Cliente** y eliges el **Origen** (por ejemplo, "Anuncio TikTok").
+  Con el filtro de orígenes ves cuántos clientes trajo cada red.
+  La lista de orígenes está al inicio de `crm/crm.js` (`ORIGENES`).
 
 Para mirarlo antes de configurarlo, abre `crm/index.html` y toca **Ver el CRM con clientes de ejemplo**.
 

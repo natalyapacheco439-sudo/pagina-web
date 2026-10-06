@@ -157,7 +157,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--c
 .cifra--alerta .cifra__num { color: var(--clay); }
 
 /* ===== Filtros ===== */
-.filtros { display: grid; grid-template-columns: 2fr repeat(3, 1fr); gap: .6rem; }
+.filtros { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: .6rem; }
 
 /* ===== Lista ===== */
 .lista { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: .8rem; }
