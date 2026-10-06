@@ -270,6 +270,9 @@
           <label>Mensaje
             <textarea name="mensaje" rows="4" placeholder="Cuéntanos sobre el inmueble: ciudad, localidad, metros…" required></textarea>
           </label>
+          <label class="form__trampa" aria-hidden="true">No llenar
+            <input type="text" name="sitio_web" tabindex="-1" autocomplete="off">
+          </label>
           <button type="submit" class="btn">Enviar mensaje</button>
           <p class="form__note" id="form-note" role="status"></p>
         </form>

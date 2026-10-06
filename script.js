@@ -1,6 +1,9 @@
 // ===== Datos de contacto (cámbialos aquí) =====
 const WHATSAPP = "573112785802"; // número con indicativo 57, sin + ni espacios
 const EMAIL_DESTINO = "amarahome05@gmail.com";
+// Dirección de la aplicación web de Google Apps Script (ver crm/README.md).
+// Mientras esté vacía, el formulario abre el correo del visitante como antes.
+const CRM_URL = "";
 
 // Menú para celulares
 const toggle = document.querySelector(".nav-toggle");
@@ -291,18 +294,44 @@ const observer = new IntersectionObserver(
 );
 revealables.forEach((el) => observer.observe(el));
 
-// Formulario: abre el correo del visitante con el mensaje ya escrito
+// Formulario: guarda el mensaje en el CRM; si no se puede, abre el correo del visitante
 const form = document.getElementById("contact-form");
 const note = document.getElementById("form-note");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const data = new FormData(form);
+const abrirCorreo = (data) => {
   const asunto = encodeURIComponent(`${data.get("interes")} - ${data.get("nombre")}`);
   const cuerpo = encodeURIComponent(
     `${data.get("mensaje")}\n\nNombre: ${data.get("nombre")}\nCorreo: ${data.get("correo")}\nTeléfono: ${data.get("telefono") || "-"}`
   );
   window.location.href = `mailto:${EMAIL_DESTINO}?subject=${asunto}&body=${cuerpo}`;
   note.textContent = "¡Gracias! Se abrirá tu aplicación de correo para enviar el mensaje.";
-  form.reset();
+};
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const data = new FormData(form);
+  if (!CRM_URL) {
+    abrirCorreo(data);
+    form.reset();
+    return;
+  }
+
+  const boton = form.querySelector('button[type="submit"]');
+  boton.disabled = true;
+  note.textContent = "Enviando…";
+  try {
+    const res = await fetch(CRM_URL, {
+      method: "POST",
+      body: JSON.stringify({ accion: "nuevo", cliente: Object.fromEntries(data) }),
+    });
+    const r = await res.json();
+    if (!r.ok) throw new Error(r.error);
+    note.textContent = "¡Gracias! Recibimos tu mensaje y te contactaremos muy pronto.";
+    form.reset();
+  } catch (err) {
+    abrirCorreo(data);
+    form.reset();
+  } finally {
+    boton.disabled = false;
+  }
 });

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>CRM Amara Home</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="../img/marca/amara-home-icono-rojo.svg">
+  <link rel="apple-touch-icon" href="../img/marca/favicon-180.png">
+  <meta name="theme-color" content="#950606">
+  <link rel="stylesheet" href="crm.css">
+</head>
+<body>
+
+  <!-- ===== Entrada ===== -->
+  <section class="entrada" id="entrada" hidden>
+    <form class="entrada__caja" id="entrada-form">
+      <img src="../img/marca/amara-home-horizontal.svg" alt="Amara Home" class="entrada__logo">
+      <h1>CRM de clientes</h1>
+      <p class="tenue">Conecta tu hoja de Google. Los pasos están en <code>crm/README.md</code>.</p>
+      <label>Dirección de la aplicación web
+        <input type="url" name="url" required placeholder="https://script.google.com/macros/s/…/exec">
+      </label>
+      <label>Clave
+        <input type="password" name="clave" required autocomplete="current-password">
+      </label>
+      <button class="btn" type="submit">Entrar</button>
+      <p class="aviso" id="entrada-aviso" role="status"></p>
+      <button class="enlace" type="button" id="ver-ejemplo">Ver el CRM con clientes de ejemplo</button>
+    </form>
+  </section>
+
+  <!-- ===== CRM ===== -->
+  <div class="app" id="app" hidden>
+    <header class="barra">
+      <div class="barra__marca">
+        <img src="../img/marca/amara-home-icono-rojo.svg" alt="" class="barra__icono">
+        <span>CRM <strong>Amara Home</strong></span>
+        <span class="etiqueta etiqueta--ejemplo" id="modo-ejemplo" hidden>Datos de ejemplo</span>
+      </div>
+      <div class="barra__acciones">
+        <button class="btn btn--small" id="nuevo-cliente">+ Cliente</button>
+        <button class="btn btn--small btn--outline" id="exportar">Exportar a Excel</button>
+        <button class="btn btn--small btn--outline" id="recargar" title="Traer los clientes nuevos">Actualizar</button>
+        <button class="btn btn--small btn--outline" id="salir">Salir</button>
+      </div>
+    </header>
+
+    <main class="contenido">
+      <div class="cifras" id="cifras">
+        <button class="cifra" data-vista="nuevos"><span class="cifra__num" id="n-nuevos">0</span><span>Nuevos sin responder</span></button>
+        <button class="cifra cifra--alerta" data-vista="atrasados"><span class="cifra__num" id="n-atrasados">0</span><span>Seguimientos atrasados</span></button>
+        <button class="cifra" data-vista="hoy"><span class="cifra__num" id="n-hoy">0</span><span>Para contactar hoy</span></button>
+        <button class="cifra" data-vista="activos"><span class="cifra__num" id="n-activos">0</span><span>Clientes activos</span></button>
+      </div>
+
+      <form class="filtros" id="filtros">
+        <input type="search" name="buscar" placeholder="Buscar nombre, teléfono, correo o mensaje…" aria-label="Buscar">
+        <select name="vista" aria-label="Seguimiento">
+          <option value="activos">Activos</option>
+          <option value="nuevos">Nuevos sin responder</option>
+          <option value="atrasados">Seguimiento atrasado</option>
+          <option value="hoy">Para hoy y atrasados</option>
+          <option value="semana">Próximos 7 días</option>
+          <option value="todos">Todos (también cerrados y perdidos)</option>
+        </select>
+        <select name="estado" aria-label="Estado"><option value="">Todos los estados</option></select>
+        <select name="interes" aria-label="Interés"><option value="">Todos los intereses</option></select>
+      </form>
+
+      <p class="aviso" id="aviso" role="status"></p>
+      <div class="lista" id="lista"></div>
+      <p class="vacio" id="vacio" hidden>No hay clientes con estos filtros.</p>
+    </main>
+  </div>
+
+  <!-- ===== Ficha del cliente ===== -->
+  <dialog class="ficha" id="ficha">
+    <form id="ficha-form" method="dialog">
+      <header class="ficha__cabeza">
+        <div>
+          <h2 id="ficha-titulo">Cliente</h2>
+          <p class="tenue" id="ficha-sub"></p>
+        </div>
+        <button class="cerrar" value="cerrar" aria-label="Cerrar" formnovalidate>&times;</button>
+      </header>
+
+      <div class="ficha__cuerpo">
+        <div class="ficha__datos">
+          <div class="rejilla">
+            <label>Nombre <input name="nombre" required></label>
+            <label>Teléfono / WhatsApp <input name="telefono" type="tel"></label>
+            <label>Correo <input name="correo" type="email"></label>
+            <label>Interés <select name="interes"></select></label>
+            <label>Estado <select name="estado"></select></label>
+            <label>Origen <select name="origen"></select></label>
+          </div>
+
+          <label>Próximo seguimiento
+            <span class="fila-fecha">
+              <input name="seguimiento" type="date">
+              <button type="button" class="chip" data-dias="1">Mañana</button>
+              <button type="button" class="chip" data-dias="3">3 días</button>
+              <button type="button" class="chip" data-dias="7">1 semana</button>
+              <button type="button" class="chip" data-dias="">Sin fecha</button>
+            </span>
+          </label>
+
+          <label>Mensaje del cliente <textarea name="mensaje" rows="3"></textarea></label>
+          <label>Agregar nota <textarea name="nota" rows="2" placeholder="Ej.: Lo llamé, quiere visita el sábado"></textarea></label>
+          <div class="historial" id="historial"></div>
+        </div>
+
+        <aside class="ficha__respuestas">
+          <h3>Respuestas rápidas</h3>
+          <div class="plantillas" id="plantillas"></div>
+          <textarea id="respuesta" rows="6" aria-label="Mensaje para el cliente" placeholder="Elige una respuesta o escribe la tuya"></textarea>
+          <div class="enviar">
+            <button type="button" class="btn btn--small btn--whatsapp" id="enviar-wa">WhatsApp</button>
+            <button type="button" class="btn btn--small btn--outline" id="enviar-correo">Correo</button>
+            <button type="button" class="btn btn--small btn--outline" id="copiar">Copiar</button>
+          </div>
+          <p class="tenue pequeno">Al enviar, el cliente pasa a "Contactado" y queda anotado en su historial.</p>
+        </aside>
+      </div>
+
+      <footer class="ficha__pie">
+        <button type="button" class="enlace enlace--peligro" id="eliminar">Eliminar cliente</button>
+        <span class="aviso" id="ficha-aviso" role="status"></span>
+        <button class="btn" type="submit" value="guardar" id="guardar">Guardar</button>
+      </footer>
+    </form>
+  </dialog>
+
+  <script src="plantillas.js"></script>
+  <script src="crm.js"></script>
+</body>
+</html>

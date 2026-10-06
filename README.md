@@ -25,6 +25,7 @@ Los inmuebles con `ejemplo: true` son de muestra: bórralos cuando subas los rea
 ## Datos de contacto
 
 - **WhatsApp y correo:** al inicio de `script.js` (`WHATSAPP` y `EMAIL_DESTINO`).
+- **CRM:** la dirección de la hoja de Google va en `CRM_URL`, al inicio de `script.js`.
 - **Teléfono, oficina y horario:** en la sección Contacto de `index.html`.
 
 ## Archivos
@@ -34,6 +35,7 @@ Los inmuebles con `ejemplo: true` son de muestra: bórralos cuando subas los rea
 - `styles.css`: colores y diseño
 - `script.js`: catálogo, filtros, ventana de detalle, menú y formulario
 - `img/`: logos y fotos
+- `crm/`: CRM de clientes (ver `crm/README.md` para configurarlo)
 
 ## Marca
 
@@ -49,3 +51,8 @@ El catálogo tiene una vista de **Mapa** (botón "Mapa" junto al número de resu
 Cada inmueble aparece en el centro de su localidad (Bogotá) o municipio, según `zonas.js`, para mostrar la zona sin revelar la dirección.
 Para un punto exacto, agrega `ubicacion: [latitud, longitud]` al inmueble en `inmuebles.js`.
 El mapa usa Leaflet (en `vendor/leaflet/`) con mapas de OpenStreetMap y CARTO.
+
+## CRM de clientes
+
+Los mensajes del formulario se guardan en una hoja de Google y se responden desde `crm/index.html`.
+Los pasos para configurarlo están en `crm/README.md`.

@@ -535,6 +535,7 @@ select:focus, .filters input:focus { outline: none; border-color: var(--clay); }
 }
 .form input:focus, .form textarea:focus, .form select:focus { outline: none; border-color: var(--clay); }
 .form__note { color: var(--gray); font-weight: 600; min-height: 1.5em; }
+.form__trampa { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
 /* ===== Pie ===== */
 .footer { background: var(--black); color: #bdbdbb; padding: 2rem 0; }
