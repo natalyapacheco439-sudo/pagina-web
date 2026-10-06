@@ -3,7 +3,7 @@ const WHATSAPP = "573112785802"; // número con indicativo 57, sin + ni espacios
 const EMAIL_DESTINO = "amarahome05@gmail.com";
 // Dirección de la aplicación web de Google Apps Script (ver crm/README.md).
 // Mientras esté vacía, el formulario abre el correo del visitante como antes.
-const CRM_URL = "";
+const CRM_URL = "https://script.google.com/macros/s/AKfycbxY6mB1Kot0m-lk3UvKW6vv_yUaR7ehOU60BAimf2LdFpPD8Kk62YVHMcwVpJve8cbg/exec";
 
 // Menú para celulares
 const toggle = document.querySelector(".nav-toggle");
