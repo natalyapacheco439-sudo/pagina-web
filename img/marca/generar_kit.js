@@ -11,7 +11,7 @@ const ICONO_R = svg('amara-home-icono-rojo');
 const LOGO_WR = LOGO_W.replace(/#5a5a58/g, '#b83a3a').replace(/#bdbdbb/g, '#ffffff');
 
 // Datos editables
-const WA = '+57 311 278 5802';
+const WA = '+57 316 886 9319';
 const ZONA = 'Bogotá y municipios aledaños';
 
 const LINES = (color, op = 1, sw = 15, block = 'none') => `<svg viewBox="140 330 525 320" xmlns="http://www.w3.org/2000/svg" style="opacity:${op}">

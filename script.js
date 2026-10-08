@@ -1,5 +1,5 @@
 // ===== Datos de contacto (cámbialos aquí) =====
-const WHATSAPP = "573112785802"; // número con indicativo 57, sin + ni espacios
+const WHATSAPP = "573168869319"; // número con indicativo 57, sin + ni espacios
 const EMAIL_DESTINO = "amarahome05@gmail.com";
 // Dirección de la aplicación web de Google Apps Script (ver crm/README.md).
 // Mientras esté vacía, el formulario abre el correo del visitante como antes.
